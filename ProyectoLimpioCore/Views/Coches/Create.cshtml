@@ -1,0 +1,28 @@
+﻿@model ProyectoLimpioCore.Models.Coche
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Coche</h4>
+<hr />
+
+<form method="post">
+    <label>Marca</label>
+    <input name="marca" class="form-control" />
+    <label>Modelo</label>
+    <input name="modelo" class="form-control" />
+    <label>Conductor</label>
+    <input name="conductor" class="form-control" />
+    <label>Imagen</label>
+    <input name="imagen" class="form-control" /><br />
+    <input type="submit" value="Create" class="btn btn-primary" />
+</form>
+
+<a asp-action="Index" asp-controller="Coches">Back to List</a>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

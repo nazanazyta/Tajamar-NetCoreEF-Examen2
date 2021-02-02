@@ -1,0 +1,31 @@
+﻿@model ProyectoLimpioCore.Models.Coche
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Coche</h4>
+<hr />
+
+<form method="post">
+    <input type="text" name="idcoche" class="form-control" value="@Model.IdCoche" hidden />
+    <label>Marca</label>
+    <input type="text" name="marca" class="form-control" value="@Model.Marca" />
+    <label>Modelo</label>
+    <input type="text" name="modelo" class="form-control" value="@Model.Modelo" />
+    <label>Conductor</label>
+    <input type="text" name="conductor" class="form-control" value="@Model.Conductor" />
+    <label>Imagen</label>
+    <input type="text" name="imagen" class="form-control" value="@Model.Imagen" /><br />
+    <input type="submit" value="Save" class="btn btn-primary" />
+</form>
+
+<div>
+    <a asp-action="Index" asp-controller="Coches">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

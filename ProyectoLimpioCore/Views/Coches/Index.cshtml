@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ProyectoLimpioCore.Models.Coche>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-controller="Coches" asp-action="Create">Create New</a>
+</p>
+<p>
+    <a asp-controller="Coches" asp-action="BuscadorMarca">Buscador por marca</a>
+</p>
+<table class="table table-bordered table-warning">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conductor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conductor)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Coches", new { id = item.IdCoche }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Edit", "Edit", "Coches", new { id = item.IdCoche }, new { @class = "btn btn-warning" })
+                <form class="eliminar" method="post">
+                    <input type="text" name="id" value="@item.IdCoche" hidden />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                @*@Html.ActionLink("Delete", "Delete", "Coches", new { id = item.IdCoche }, new { @class = "btn btn-danger" })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section scripts{ 
+    <script>
+        $(document).ready(function () {
+            $(".eliminar").submit(function () {
+                confirm("Seguro que desea eliminar este regristro?");
+            });
+        });
+    </script>
+    @*<script>
+        $(document).ready(function () {
+            $(".eliminar").click(function () {
+                var res = confirm("Seguro que desea eliminar este regristro?");
+                if (res == true) {
+                    $(".eliminar").attr("id", $(".eliminar").attr("id"));
+                } else {
+                    $(".eliminar").attr("id", 0);
+                }
+            });
+        });
+    </script>*@
+}

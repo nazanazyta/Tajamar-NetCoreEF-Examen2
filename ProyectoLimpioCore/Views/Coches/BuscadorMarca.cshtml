@@ -1,0 +1,29 @@
+﻿@model List<Coche>
+<h1>Buscador por marca</h1>
+
+<form method="post">
+    <input type="text" name="marca" class="form-control" /><br />
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+<br />
+@if (Model != null){
+    <table class="table table-bordered table-success">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Conductor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Coche c in Model)
+            {
+                <tr>
+                    <td>@c.Marca</td>
+                    <td>@c.Modelo</td>
+                    <td>@c.Conductor</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
